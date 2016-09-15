@@ -2,7 +2,7 @@
 class JuggerEventsPostTypeEvent {
 
 	function __construct() {
-        add_action( 'init', array( $this, 'custom_post_type'), 0 );
+        add_action( 'init', array( $this, 'custom_post_type'), 15 );
 	}
     
     // Register Custom Post Type
@@ -35,6 +35,7 @@ class JuggerEventsPostTypeEvent {
             'items_list_navigation' => 'Event list navigation',
             'filter_items_list'     => 'Filter events',
         );
+        
         $args = array(
             'label'                 => 'Event',
             'description'           => 'Jugger Events',
@@ -56,6 +57,7 @@ class JuggerEventsPostTypeEvent {
             'query_var'             => 'event',
             'capability_type'       => 'page',
         );
+        
         register_post_type( 'jugger_event', $args );
     }
 }

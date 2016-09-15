@@ -2,8 +2,8 @@
 class JuggerEventsAdmin {
 
 	function __construct() {
-        register_activation_hook( JUGGER_PLUGIN_FILE, array( $this, 'plugin_activation' ) );
-        register_deactivation_hook( JUGGER_PLUGIN_FILE, array( $this, 'plugin_deactivation' ) );
+        register_activation_hook( JUGGER_EVENTS_ADMIN_FILE, array( $this, 'plugin_activation' ) );
+        register_deactivation_hook( JUGGER_EVENTS_ADMIN_FILE, array( $this, 'plugin_deactivation' ) );
 
 		$this->clean_up();
         $this->post_type_event();
