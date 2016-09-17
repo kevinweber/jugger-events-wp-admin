@@ -40,8 +40,8 @@ class JuggerEventsPostTypeEvent {
             'label'                 => 'Event',
             'description'           => 'Jugger Events',
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor', ),
-            'taxonomies'            => array( 'category', 'post_format' ),
+            'supports'              => array( 'title', 'editor' ),
+            'taxonomies'            => array( 'post_format' ),  // array( 'category', 'post_format' ),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -58,6 +58,6 @@ class JuggerEventsPostTypeEvent {
             'capability_type'       => 'page',
         );
         
-        register_post_type( 'jugger_event', $args );
+        register_post_type( 'jugger-event', $args );
     }
 }

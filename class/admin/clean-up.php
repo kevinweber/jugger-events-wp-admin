@@ -10,6 +10,7 @@ class JuggerEventsCleanUp {
         add_action( 'admin_menu', array( $this, 'remove_menus') );
         add_action( 'wp_before_admin_bar_render', array( $this, 'remove_adminbar_menus') );
         add_action( 'current_screen', array( $this, 'block_pages') );
+//        add_filter( 'screen_options_show_screen', array( $this, 'remove_screen_options'), 10, 2 );
         $this->exit_on_load();
 	}
   
@@ -26,6 +27,18 @@ class JuggerEventsCleanUp {
             $wp_admin_bar->remove_menu($menu);
         }
     }
+
+//    function remove_screen_options($display_boolean, $wp_screen_object){
+//      $blacklist = array('jugger-event');
+//        
+//      if (in_array(get_post_type(), $blacklist)) {
+//        $wp_screen_object->render_screen_layout();
+//        $wp_screen_object->render_per_page_options();
+//        return false;
+//      } else {
+//        return true;
+//      }
+//    }
 
     // Prevent direct access to those pages
     function block_pages () {

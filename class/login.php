@@ -7,7 +7,7 @@ class JuggerEventsLogin {
 	}
 
     function redirect_after_login() {
-        wp_redirect( admin_url( 'edit.php?post_type=jugger_event' ) );
+        wp_redirect( admin_url( 'edit.php?post_type=jugger-event' ) );
         exit;
     }
 }

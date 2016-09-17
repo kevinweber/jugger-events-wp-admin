@@ -17,13 +17,30 @@ if ( !defined( 'JUGGER_EVENTS_ADMIN_FILE' ) ) {
 	define( 'JUGGER_EVENTS_ADMIN_FILE', __FILE__ );
 }
 
-// Automatically load all PHP classes
-spl_autoload_register(function ($class_name) {
-    $filteredClassName = str_replace("JuggerEvents", "", $class_name);
-  
-    include JUGGER_EVENTS_ADMIN_PATH . 'class/' . $filteredClassName . '.php';
-});
+if ( !defined( 'JUGGER_EVENTS_ADMIN_TD' ) ) {
+	define( 'JUGGER_EVENTS_ADMIN_TD', 'jugger-events' ); // = text domain (used for translations)
+}
 
-new JuggerEventsLogin();
-new JuggerEventsAdmin();
-new JuggerEventsFrontend();
+class JuggerEventsWpAdmin {
+    function __construct() {
+        $this->autoloader();
+        
+        new JuggerEventsLogin();
+        new JuggerEventsAdmin();
+        new JuggerEventsFrontend();
+    }
+    
+    function autoloader() {
+        // Automatically load all PHP classes
+        spl_autoload_register(function ($class_name) {
+            $filteredClassName = str_replace("JuggerEvents", "", $class_name);
+            $path = JUGGER_EVENTS_ADMIN_PATH . 'class/' . $filteredClassName . '.php';
+            
+            if (file_exists($path)) {
+                include $path;
+            }
+        });
+    }
+}
+
+new JuggerEventsWpAdmin();
