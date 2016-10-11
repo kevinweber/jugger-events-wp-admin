@@ -1,7 +1,7 @@
 <?php
 class JuggerEventsMetaBoxes {
     static private $prefix = 'jugger_event_';
-    
+
     function __construct() {
         add_filter( 'rwmb_meta_boxes', array( $this, 'register_meta_boxes' ) );
         add_action( 'admin_menu', array( $this, 'remove_meta_boxes' ) );
@@ -48,10 +48,10 @@ class JuggerEventsMetaBoxes {
                 )
             )
         );
-        
+
         return $meta_boxes;
     }
-    
+
     function meta_box__select_event_type() {
         return array(
             'name'        => esc_html__( 'Event Type', JUGGER_EVENTS_ADMIN_TD ),
@@ -60,6 +60,8 @@ class JuggerEventsMetaBoxes {
             'options'     => array(
                 'practice' => esc_html__( 'Practice/Training', JUGGER_EVENTS_ADMIN_TD ),
                 'tournament' => esc_html__( 'Tournament', JUGGER_EVENTS_ADMIN_TD ),
+                'info' => esc_html__( 'Information Session', JUGGER_EVENTS_ADMIN_TD ),
+                'charity' => esc_html__( 'Charity Event', JUGGER_EVENTS_ADMIN_TD ),
                 'other' => esc_html__( 'Other', JUGGER_EVENTS_ADMIN_TD ),
             ),
 
@@ -87,7 +89,7 @@ class JuggerEventsMetaBoxes {
             'std'  => __( 'Berkley, California', JUGGER_EVENTS_ADMIN_TD )
         );
     }
-    
+
     function meta_box__location_map() {
         return array(
             'id'            => 'map',
@@ -98,14 +100,14 @@ class JuggerEventsMetaBoxes {
             // ID of text field where address is entered. They MUST match otherwise they won't play together!
             // Can be list of text fields, separated by commas (for ex. city, state)
             'address_field' => $this::$prefix . 'address',
-            
+
             // Define this key in wp-config.php
             // Example:
             // define('GOOGLE_MAPS_API_KEY', 'your-api-key');
             'api_key'       => GOOGLE_MAPS_API_KEY
         );
     }
-    
+
     function meta_box__datetime_start() {
         return array(
             'name'       => esc_html__( 'Start Time', JUGGER_EVENTS_ADMIN_TD ),
@@ -132,11 +134,11 @@ class JuggerEventsMetaBoxes {
             )
         );
     }
-    
+
     function remove_meta_boxes() {
         remove_meta_box('slugdiv', 'jugger-event', 'normal');
     }
-    
+
     // TODO: Customize permalink
     // $html, $postId, $new_title, $new_slug, $post
     function customize_permalink($html) {
