@@ -24,18 +24,18 @@ if ( !defined( 'JUGGER_EVENTS_ADMIN_TD' ) ) {
 class JuggerEventsWpAdmin {
     function __construct() {
         $this->autoloader();
-        
+
         new JuggerEventsLogin();
         new JuggerEventsAdmin();
         new JuggerEventsFrontend();
     }
-    
+
     function autoloader() {
         // Automatically load all PHP classes
         spl_autoload_register(function ($class_name) {
             $filteredClassName = str_replace("JuggerEvents", "", $class_name);
-            $path = JUGGER_EVENTS_ADMIN_PATH . 'class/' . $filteredClassName . '.php';
-            
+            $path = JUGGER_EVENTS_ADMIN_PATH . 'class/' . strtolower($filteredClassName) . '.php';
+
             if (file_exists($path)) {
                 include $path;
             }
