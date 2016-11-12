@@ -61,7 +61,7 @@ class JuggerEventsMetaBoxes {
                 'practice' => esc_html__( 'Practice/Training', JUGGER_EVENTS_ADMIN_TD ),
                 'tournament' => esc_html__( 'Tournament', JUGGER_EVENTS_ADMIN_TD ),
                 'info' => esc_html__( 'Info Session', JUGGER_EVENTS_ADMIN_TD ),
-                'charity' => esc_html__( 'Charity Event', JUGGER_EVENTS_ADMIN_TD ),
+                'community' => esc_html__( 'Community Event', JUGGER_EVENTS_ADMIN_TD ),
                 'other' => esc_html__( 'Other', JUGGER_EVENTS_ADMIN_TD ),
             ),
 
